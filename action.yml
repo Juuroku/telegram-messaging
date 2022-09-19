@@ -1,0 +1,22 @@
+# action.yml
+name: 'Telegram Messaging'
+description: 'Send Message to Telegram Chat'
+inputs:
+    telegram-token: # bot token
+        description: 'Token of your Telegram bot'
+        required: true
+    telegram-chat: # chat id
+        description: 'Id of the chat you want to send to'
+        required: true
+    message:
+        description: 'Content you want to send'
+        required: true
+    parse:
+        description: 'Defined how to parse your message, markdown-style or HTML style'
+        default: 'default'
+outputs:
+    status:
+        description: 'Successed of failed hint'
+runs:
+    using: 'docker'
+    image: 'Dockerfile'
