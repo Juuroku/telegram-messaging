@@ -2,9 +2,9 @@
 
 date
 
-output=$(python3 app.py --TOKEN=$1 \
---CHAT_ID=$2 \
---MESSAGE=$3 \
---PARSE=$4)
+output=$(python3 app.py --TOKEN=$INPUT_TELEGRAM-TOKEN \
+--CHAT_ID=$INPUT_TELEGRAM-CHAT \
+--MESSAGE=$INPUT_MESSAGE \
+--PARSE=$INPUT_PARSE)
 
 echo "::set-output name=status::$output"
