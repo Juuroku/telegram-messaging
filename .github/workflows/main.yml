@@ -1,0 +1,17 @@
+on:[push]
+
+jobs:
+    tg_msg_job:
+        runs-on: ubuntu-latest
+        name: A job to test this action
+        steps:
+            - name: Send Message
+              id: test
+              uses: Juuroku/telegram-messaging@v0.1
+              with: 
+                telegram-token:  ${{ TELEGRAM_TOKEN }}
+                telegram-chat: ${{ TELEGRAM_ID }}
+                message: |
+                    *Message From Telegram Messaging Action*
+                    Test Message
+                parse: 'markdown'
