@@ -20,3 +20,8 @@ outputs:
 runs:
     using: 'docker'
     image: 'Dockerfile'
+    args:
+        - ${{ inputs.telegram-token }}
+        - ${{ inputs.telegram-chat }}
+        - ${{ inputs.message }}
+        - ${{ inputs.parse }}
