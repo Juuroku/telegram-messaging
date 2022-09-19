@@ -1,5 +1,5 @@
-on:[push]
-
+name: telegram messaging test
+on: [push]
 jobs:
     tg_msg_job:
         runs-on: ubuntu-latest
