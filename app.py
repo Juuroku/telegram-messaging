@@ -7,7 +7,7 @@ args = {}
 
 for arg in sys.argv[1:]:
     variable = re.search('\-\-(.*)\=',arg)
-    if type(variable) == NoneType:
+    if variable is None:
         print(arg)
         exit(1)
     variable = variable.group(1)
