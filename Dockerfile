@@ -8,8 +8,8 @@ RUN pip3 install -r requirements.txt
 
 ADD app.py .
 
-RUN echo $INPUT_MESSAGE
+RUN true
 COPY entrypoint.sh /entrypoint.sh
 RUN chmod +x entrypoint.sh
 
-ENTRYPOINT ["/entrypoint.sh"]
+ENTRYPOINT ["/entrypoint.sh", "$INPUT_TELEGRAM-TOKEN", "$INPUT_TELEGRAM-CHAT", "$INPUT_MESSAGE", "$INPUT_PARSE"]
