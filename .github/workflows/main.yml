@@ -5,9 +5,11 @@ jobs:
         runs-on: ubuntu-latest
         name: A job to test this action
         steps:
+            - name: Checkout
+              uses: actions/checkout@v3
             - name: Send Message
               id: test
-              uses: Juuroku/telegram-messaging@v0.5
+              uses: ./
               with: 
                 telegram-token:  ${{ secrets.TELEGRAM_TOKEN }}
                 telegram-chat: ${{ secrets.TELEGRAM_ID }}
