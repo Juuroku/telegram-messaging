@@ -15,3 +15,5 @@ jobs:
                     *Message From Telegram Messaging Action*
                     Test Message
                 parse: 'markdown'
+            - name: Get the output
+              run: echo "${{ steps.test.outputs.status }}"
