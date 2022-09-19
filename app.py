@@ -21,8 +21,7 @@ if 'parse' in args:
             parse = 'MarkdownV2'
     elif p == 'html' :
         parse = 'HTML'
-    elif len(p) == 0 or p == 'default':
-    else :
+    elif len(p) != 0 and p != 'default':
         sys.exit("Wrong Parse Mode: %s"%p)
 
 url = "https://api.telegram.org/bot%s/sendMessage"%args['token']
