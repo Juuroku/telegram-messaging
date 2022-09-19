@@ -9,8 +9,8 @@ jobs:
               id: test
               uses: Juuroku/telegram-messaging@v0.1
               with: 
-                telegram-token:  ${{ TELEGRAM_TOKEN }}
-                telegram-chat: ${{ TELEGRAM_ID }}
+                telegram-token:  ${{ secrets.TELEGRAM_TOKEN }}
+                telegram-chat: ${{ secrets.TELEGRAM_ID }}
                 message: |
                     *Message From Telegram Messaging Action*
                     Test Message
