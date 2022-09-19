@@ -8,7 +8,7 @@ RUN pip3 install -r requirements.txt
 
 ADD app.py .
 
-RUN true
+RUN echo $INPUT_MESSAGE
 COPY entrypoint.sh /entrypoint.sh
 RUN chmod +x entrypoint.sh
 
