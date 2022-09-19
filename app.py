@@ -7,6 +7,9 @@ args = {}
 
 for arg in sys.argv[1:]:
     variable = re.search('\-\-(.*)\=',arg)
+    if type(variable) == NoneType:
+        print(arg)
+        exit(1)
     variable = variable.group(1)
     value = re.search('\=(.*)',arg,re.DOTALL)
     value = value.group(1)
