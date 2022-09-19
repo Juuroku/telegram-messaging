@@ -7,7 +7,7 @@ jobs:
         steps:
             - name: Send Message
               id: test
-              uses: Juuroku/telegram-messaging@v0.1
+              uses: Juuroku/telegram-messaging@v0.2
               with: 
                 telegram-token:  ${{ secrets.TELEGRAM_TOKEN }}
                 telegram-chat: ${{ secrets.TELEGRAM_ID }}
