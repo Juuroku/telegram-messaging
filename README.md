@@ -18,8 +18,6 @@ jobs:
         runs-on: ubuntu-latest
         name: send message by telegram bot
         steps:
-            - name: Checkout
-              uses: actions/checkout@v3
             - name: Send Message
               uses: Juuroku/telegram-messaging@master
               with: 
