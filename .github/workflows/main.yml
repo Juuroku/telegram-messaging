@@ -1,5 +1,8 @@
 name: telegram messaging test
-on: [push]
+on:
+    push:
+        branches:
+            - 'master'
 jobs:
     tg_msg_job:
         runs-on: ubuntu-latest

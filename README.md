@@ -3,6 +3,8 @@
 This is a simple action to send message to Telegram chat with Telegram bot.
 About Telegram bot, see [official intrudoction](https://core.telegram.org/bots).
 
+[![telegram messaging test](https://github.com/Juuroku/telegram-messaging/actions/workflows/main.yml/badge.svg?branch=master&event=push)](https://github.com/Juuroku/telegram-messaging/actions/workflows/main.yml)
+
 ## Inputs
 
 ### `telegram-token`
