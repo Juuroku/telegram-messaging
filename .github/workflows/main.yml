@@ -17,7 +17,7 @@ jobs:
                 echo "::set-output name=commit_msg::$(echo ${{ github.event.head_commit.message }} | sed -r 's/([][>~+{}|\.\*-])/\\\1/g')"
             - name: Send Message
               id: test
-              uses: ./
+              uses: Juuroku/telegram-messaging@master
               with: 
                 telegram-token:  ${{ secrets.TELEGRAM_TOKEN }}
                 telegram-chat: ${{ secrets.TELEGRAM_ID }}
