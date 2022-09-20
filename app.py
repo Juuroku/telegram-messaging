@@ -1,28 +1,35 @@
 import re
+import argparse
 import requests
 import sys
 import json
 
-args = {}
+parser = argparse.ArgumentParser(add_help=True)
 
-for arg in sys.argv[1:]:
-    variable = re.search('\-\-(.*)\=',arg)
-    if variable is None:
-        print(arg)
-        exit(1)
-    variable = variable.group(1)
-    value = re.search('\=(.*)',arg,re.DOTALL)
-    if value is not None:
-        value = value.group(1)
-        args[variable.lower()] = value
-    else:
-        args[variable.lower()] = ''
+parser.add_argument('-t', '--token',
+        required=True,
+        dest='token',
+        help='Token of Telegram bot. Required',
+        type=str)
+parser.add_argument('-c', '--chat',
+        required=True,
+        dest='chat_id',
+        help='Chat id of Telegram chat. Required',
+        type=str)
+parser.add_argument('-m', '--message',
+        required=True,
+        dest='message',
+        help='Message you want to send. Required',
+        type=str)
+parser.add_argument('-p', '--parse',
+        dest='parse',
+        help='Parse style of message. Markdown or HTML. Optional',
+        type=str)
 
-if 'token' not in args or 'chat_id' not in args or 'message' not in args:
-    sys.exit("Missing Vars (Required: TOKEN, CHAT_ID, MESSAGE)")
+args = parser.parse_args()
 
-if 'parse' in args:
-    p = args['parse'].lower()
+if args.parse is not None:
+    p = args.parse.lower()
     if p == 'markdownv2' or p == 'md' or p == 'markdown' :
             parse = 'MarkdownV2'
     elif p == 'html' :
@@ -30,10 +37,11 @@ if 'parse' in args:
     elif len(p) != 0 and p != 'default':
         sys.exit("Wrong Parse Mode: %s"%p)
 
-url = "https://api.telegram.org/bot%s/sendMessage"%args['token']
+url = "https://api.telegram.org/bot%s/sendMessage"%args.token
 obj = {}
-obj['chat_id'] = args['chat_id']
-obj['text'] = args['message']
+obj = {}
+obj['chat_id'] = args.chat_id
+obj['text'] = args.message
 
 if 'parse' in locals() or 'parse' in globals():
     obj['parse_mode'] = parse
@@ -43,8 +51,7 @@ x = requests.post(url, json = obj)
 result = json.loads(x.text)
 if not result['ok']:
     print("{} - {}".format(result['error_code'], result['description']))
-    print(obj['text'])
-    sys.exit()
+    sys.exit(obj['text'])
 
 print('Message Sent')
 sys.exit()
