@@ -7,6 +7,10 @@ jobs:
         steps:
             - name: Checkout
               uses: actions/checkout@v3
+            - name: String Process
+              id: sp
+              run: echo "::set-output name=repo::$(echo ${{ github.repository }} | sed -r 's/([][>~+{}|\.\*-])/\\\1/g')"
+              run: echo "::set-output name=commit_msg::$(echo ${{ github.event.head_commit.message }} | sed -r 's/([][>~+{}|\.\*-])/\\\1/g')"
             - name: Send Message
               id: test
               uses: ./
@@ -14,10 +18,10 @@ jobs:
                 telegram-token:  ${{ secrets.TELEGRAM_TOKEN }}
                 telegram-chat: ${{ secrets.TELEGRAM_ID }}
                 message: |
-                    *[${{ github.repository }}](${{ github.repositoryUrl }}) Push Event*
+                    *[${{ steps.sp.repo }}](${{ github.repositoryUrl }}) Push Event*
                     REF: ${{ github.ref_name }}
                     [LATEST COMMIT](${{ github.event.head_commit.url }}): 
-                        ${{ github.event.head_commit.message }}
+                        ${{ steps.sp.commit_msg }}
                     
                 parse: 'markdown'
             - name: Get the output
@@ -37,5 +41,5 @@ jobs:
                 message: |
                     no parse
             - name: Get the output
-              run: echo "${{ steps.test.outputs.status }}"
+              run: echo "${{ steps.parse.outputs.status }}"
     
