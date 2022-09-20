@@ -12,8 +12,11 @@ for arg in sys.argv[1:]:
         exit(1)
     variable = variable.group(1)
     value = re.search('\=(.*)',arg,re.DOTALL)
-    value = value.group(1)
-    args[variable.lower()] = value
+    if value is not None:
+        value = value.group(1)
+        args[variable.lower()] = value
+    else:
+        args[variable.lower()] = ''
 
 if 'token' not in args or 'chat_id' not in args or 'message' not in args:
     sys.exit("Missing Vars (Required: TOKEN, CHAT_ID, MESSAGE)")

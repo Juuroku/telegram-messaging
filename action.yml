@@ -16,7 +16,7 @@ inputs:
         default: 'default'
 outputs:
     status:
-        description: 'Successed of failed hint'
+        description: 'Result of sending message, if post get error response, there will be HTTP status code and error description.'
 runs:
     using: 'docker'
     image: 'Dockerfile'
