@@ -10,8 +10,6 @@ jobs:
         runs-on: ubuntu-latest
         name: A job to test this action
         steps:
-            - name: Checkout
-              uses: actions/checkout@master
             - name: String Process
               id: sp
               run: | 
