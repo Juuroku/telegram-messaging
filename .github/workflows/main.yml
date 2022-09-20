@@ -14,8 +14,8 @@ jobs:
                 telegram-token:  ${{ secrets.TELEGRAM_TOKEN }}
                 telegram-chat: ${{ secrets.TELEGRAM_ID }}
                 message: |
-                    *[${{ GITHUB_REPOSITORY }}]($GITHUB_SERVER_URL/$GITHUB_REPOSITORY) Push Event*
-                    REF: ${{ GITHUB_REF }}
+                    *[${{ github.repository }}](${{ github.repositoryUrl }}) Push Event*
+                    REF: ${{ github.ref_name }}
                     [LATEST COMMIT](${{ github.event.head_commit.url }}): 
                         ${{ github.event.head_commit.message }}
                     
