@@ -7,7 +7,6 @@ then
 	output=$(python3 /usr/bin/app.py -t "$1" \
 	-c "$2" \
 	-m "$3");
-;
 else
 	output=$(python3 /usr/bin/app.py -t "$1" \
 	-c "$2" \
