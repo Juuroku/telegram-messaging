@@ -10,6 +10,8 @@ jobs:
         runs-on: ubuntu-latest
         name: A job to test this action
         steps:
+            - name: Checkout
+              uses: actions/checkout@master
             - name: String Process
               id: sp
               run: | 
@@ -17,7 +19,7 @@ jobs:
                 echo "::set-output name=commit_msg::$(echo ${{ github.event.head_commit.message }} | sed -r 's/([][>~+{}|\.\*-])/\\\1/g')"
             - name: Send Message
               id: test
-              uses: Juuroku/telegram-messaging@master
+              uses: ./
               with: 
                 telegram-token:  ${{ secrets.TELEGRAM_TOKEN }}
                 telegram-chat: ${{ secrets.TELEGRAM_ID }}
