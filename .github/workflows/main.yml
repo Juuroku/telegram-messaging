@@ -3,6 +3,8 @@ on:
     push:
         branches:
             - '**'
+        paths-ignore:
+            - '**.md'
 jobs:
     tg_msg_job:
         runs-on: ubuntu-latest
