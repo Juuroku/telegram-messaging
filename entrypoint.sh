@@ -14,4 +14,4 @@ else
 	-p "$4");
 fi
 
-echo "::set-output name=status::$output"
+echo "status=$output" >> $GITHUB_OUTPUT
