@@ -30,20 +30,4 @@ jobs:
                 parse: 'markdown'
             - name: Get the output
               run: echo "${{ steps.test.outputs.status }}"
-    parse_check:
-        runs-on: ubuntu-latest
-        name: Check parse mode
-        steps:
-            - name: Checkout
-              uses: actions/checkout@v3
-            - name: Send Message
-              id: parse
-              uses: ./
-              with:
-                telegram-token:  ${{ secrets.TELEGRAM_TOKEN }}
-                telegram-chat: ${{ secrets.TELEGRAM_ID }}
-                message: |
-                    no parse
-            - name: Get the output
-              run: echo "${{ steps.parse.outputs.status }}"
     
