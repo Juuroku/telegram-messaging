@@ -57,3 +57,11 @@ See [Contexts](https://docs.github.com/en/actions/learn-github-actions/contexts)
 
 Define how to parse your message, markdown-style or HTML-style.  
 If you don't need this, not use this input is ok.
+
+## Output
+
+The action will set an output named `status` after execution.
+If the response from the api server said `OK`, `status` will be `Message Sent`.
+Otherwise, it will be `{HTTP Status Code} - {Description Got from Server}`.
+If you did not set any step after the action, the output will show on action page.
+Or you can use the output to decide what to do next.
