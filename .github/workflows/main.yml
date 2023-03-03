@@ -24,6 +24,7 @@ jobs:
                 message: |
                     *[${{ steps.sp.outputs.repo }}](${{ github.server_url }}/${{ github.repository }}) Push Event*
                     REF: ${{ github.ref_name }}
+                    EVENT: ${{ github.event.action }} 
                     [LATEST COMMIT](${{ github.event.head_commit.url }}): 
                         ${{ steps.sp.outputs.commit_msg }}
                     
